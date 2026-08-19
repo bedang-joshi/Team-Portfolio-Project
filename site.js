@@ -5,6 +5,34 @@
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
+  const navToggle = document.querySelector(".nav-toggle");
+  const siteNav = document.querySelector(".site-nav");
+
+  const closeNav = () => {
+    navToggle?.setAttribute("aria-expanded", "false");
+    siteNav?.classList.remove("is-open");
+  };
+
+  navToggle?.addEventListener("click", () => {
+    const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!isOpen));
+    siteNav?.classList.toggle("is-open", !isOpen);
+  });
+  siteNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeNav));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeNav();
+  });
+  document.addEventListener("click", (event) => {
+    if (window.matchMedia("(max-width: 720px)").matches &&
+        siteNav?.classList.contains("is-open") &&
+        !siteNav.contains(event.target) && !navToggle?.contains(event.target)) {
+      closeNav();
+    }
+  });
+  window.addEventListener("resize", () => {
+    if (!window.matchMedia("(max-width: 720px)").matches) closeNav();
+  });
+
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // If the visitor asked for reduced motion, skip straight to
@@ -74,8 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const link = document.querySelector(`.site-nav a[href="#${entry.target.id}"]`);
         if (!link) return;
         if (entry.isIntersecting) {
-          navLinks.forEach((l) => l.classList.remove("is-active"));
+          navLinks.forEach((l) => {
+            l.classList.remove("is-active");
+            l.removeAttribute("aria-current");
+          });
           link.classList.add("is-active");
+          link.setAttribute("aria-current", "page");
         }
       });
     },
