@@ -30,12 +30,12 @@
         <span class="brand-name">Bedang Joshi</span>
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-hidden="true" />
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="Open menu">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
         <span></span><span></span><span></span>
-      </label>
+        <span class="visually-hidden">Open menu</span>
+      </button>
 
-      <nav class="site-nav" aria-label="Primary">
+      <nav id="primary-navigation" class="site-nav" aria-label="Primary">
         <a href="#about">About</a>
         <a href="#work">Work</a>
         <a href="#skills">Skills</a>
@@ -51,21 +51,20 @@
       <div class="wrap hero-inner" data-stagger>
         <p class="spec-label"><span class="dot" aria-hidden="true"></span>Available for new roles — Q3 2026</p>
 
-        <h1 class="hero-name">
-          Bedang Joshi
-        </h1>  <img src="images.png" style="float: right; margin-left: 15px;">
-        <p class="hero-role">Software Engineer, <span class="accent-underline">Frontend  Systems</span></p>
-
-        <p class="hero-copy">
-          I design and build web products that stay fast and usable under real conditions —
-          slow networks, small screens, keyboards, screen readers. Currently focused on
-          performance engineering and accessible design systems.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#work">View work</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <div class="hero-content">
+          <h1 class="hero-name">Bedang Joshi</h1>
+          <p class="hero-role">Software Engineer, <span class="accent-underline">Frontend Systems</span></p>
+          <p class="hero-copy">
+            I design and build web products that stay fast and usable under real conditions —
+            slow networks, small screens, keyboards, screen readers. Currently focused on
+            performance engineering and accessible design systems.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">View work</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
         </div>
+        <img class="hero-image" src="images.png" alt="Portrait of Bedang Joshi">
 
         <dl class="spec-sheet" aria-label="Quick facts">
           <div class="spec-item">
