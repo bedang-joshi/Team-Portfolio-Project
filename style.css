@@ -608,17 +608,46 @@ button:focus-visible,
 
 /* Contact */
 .section-contact { text-align: left; }
-.contact-copy { color: var(--ink-muted); max-width: 50ch; }
+.contact-panel {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+}
+.contact-copy {
+  color: var(--ink-muted);
+  max-width: 50ch;
+  margin-bottom: 1rem;
+}
 
 .social-row {
   display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
   font-family: var(--font-mono);
   font-size: 0.9rem;
+  justify-content: flex-start;
 }
-.social-row a { text-decoration: none; border-bottom: 1px solid var(--line); }
-.social-row a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.social-row li {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.2);
+}
+.social-row a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.7rem 0.9rem;
+  color: var(--ink);
+}
+.social-row a:hover,
+.social-row a:focus-visible { background: var(--ink); color: var(--bg); }
+
+@media (max-width: 720px) {
+  .contact-panel { grid-template-columns: 1fr; }
+  .social-row { justify-content: flex-start; }
+}
 
 /* ============================================================
    Footer
